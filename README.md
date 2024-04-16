@@ -46,7 +46,7 @@ echo $form->field($model, 'content')->widget(Autosize::class, [
     'clientEvents' => [
         'autosize:resized' => 'function() { console.log("resized"); }'
     ]
-])
+]);
 ```
 
 without a model:
