@@ -25,7 +25,7 @@ to the require section of your composer.json
 with a model:
 
 ```php
-use sandritsch91\yii2-widget-autosize\Autosize;
+use sandritsch91\yii2\autosize\Autosize;
 
 echo Autosize::widget([
     'model' => $model,                          // The model to be used in the form
@@ -40,7 +40,7 @@ echo Autosize::widget([
 with an ActiveForm:
 
 ```php
-use sandritsch91\yii2-widget-autosize\Autosize;
+use sandritsch91\yii2\autosize\Autosize;
 
 echo $form->field($model, 'content')->widget(Autosize::class, [
     'clientEvents' => [
@@ -52,7 +52,7 @@ echo $form->field($model, 'content')->widget(Autosize::class, [
 without a model:
 
 ```php
-use sandritsch91\yii2-widget-autosize\Autosize;
+use sandritsch91\yii2\autosize\Autosize;
 
 echo Autosize::widget([
     'name' => 'myText',         // The name of the input

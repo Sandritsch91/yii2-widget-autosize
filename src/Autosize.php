@@ -3,6 +3,7 @@
 namespace sandritsch91\yii2\autosize;
 
 use yii\helpers\Html;
+use yii\helpers\Json;
 use yii\widgets\InputWidget;
 
 class Autosize extends InputWidget
@@ -44,16 +45,15 @@ class Autosize extends InputWidget
         $view = $this->getView();
         AssetBundle::register($view);
 
-        $js = "autosize(document.getElementById('$id'));";
-        $view->registerJs($js);
+        $element = 'document.getElementById(' . Json::htmlEncode($id) . ')';
 
-        // Register client events
-        if (!empty($this->clientEvents)) {
-            $js = [];
-            foreach ($this->clientEvents as $event => $handler) {
-                $js[] = "document.getElementById('$id').addEventListener('$event', $handler);";
-            }
-            $view->registerJs(implode("\n", $js));
+        // Listeners go first: autosize() fires the initial autosize:resized synchronously
+        $js = [];
+        foreach ($this->clientEvents as $event => $handler) {
+            $js[] = "$element.addEventListener(" . Json::htmlEncode($event) . ", $handler);";
         }
+        $js[] = "autosize($element);";
+
+        $view->registerJs(implode("\n", $js));
     }
 }
