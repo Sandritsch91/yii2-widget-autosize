@@ -22,20 +22,29 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=8.0",
-        "yiisoft/yii2": "^2.0.20",
+        "yiisoft/yii2": "^2.0.38",
         "bower-asset/autosize": "^4.0.0 | ^5.0.0 | ^6.0.0"
     },
     "require-dev": {
-        "yiisoft/yii2-coding-standards": "*"
+        "yiisoft/yii2-coding-standards": "*",
+        "phpunit/phpunit": "^9.6"
     },
     "autoload": {
         "psr-4": {
             "sandritsch91\\yii2\\autosize\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "sandritsch91\\yii2\\autosize\\tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.0.x-dev"
+            "dev-master": "1.x-dev"
         }
     },
     "config": {
